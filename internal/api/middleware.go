@@ -35,7 +35,6 @@ func (s *SessionAuth) Auth(ctx *gin.Context) {
 	}
 	if loginTime == "" {
 		ctx.AbortWithStatusJSON(http.StatusUnauthorized, "session auth failed")
-
 	}
 
 	fmt.Println("session id ", sessionID)
