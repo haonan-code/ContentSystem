@@ -82,7 +82,7 @@ func (c *CmsApp) generateSessionID(ctx context.Context, userID string) (string, 
 	// 取出客户端携带的 sessionID 拼接session_auth: -> redis 中查询是否有效
 	// 若为空值，则说明该会话已过期
 	authKey := utils.GetAuthKey(sessionID)
-	err = c.rdb.Set(ctx, authKey, time.Now().Unix(), 1*time.Minute).Err()
+	err = c.rdb.Set(ctx, authKey, time.Now().Unix(), 8*time.Hour).Err()
 	if err != nil {
 		fmt.Printf("rdb set error = %v \n", err)
 		return "", err
