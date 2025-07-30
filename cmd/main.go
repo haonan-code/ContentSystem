@@ -10,7 +10,7 @@ func main() {
 	r := gin.Default()
 	api.CmsRouters(r)
 
-	err := r.Run()
+	err := r.Run(":8081")
 	if err != nil {
 		fmt.Printf("r run error = %v", err)
 		return
