@@ -61,7 +61,7 @@ func (c *CmsApp) Register(ctx *gin.Context) {
 		"code": 0,
 		"msg":  "ok",
 		"data": &RegisterRsp{
-			Message: fmt.Sprintf("注册成功"),
+			Message: "注册成功",
 		},
 	})
 

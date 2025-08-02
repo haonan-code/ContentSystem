@@ -3,10 +3,10 @@ package services
 import (
 	"contentsystem/internal/dao"
 	"contentsystem/internal/model"
-	"fmt"
-	"github.com/gin-gonic/gin"
 	"net/http"
 	"time"
+
+	"github.com/gin-gonic/gin"
 )
 
 type ContentUpdateReq struct {
@@ -70,7 +70,7 @@ func (c *CmsApp) ContentUpdate(ctx *gin.Context) {
 		"code": 0,
 		"msg":  "ok",
 		"data": &ContentUpdateRsp{
-			Message: fmt.Sprintf("ok"),
+			Message: "ok",
 		},
 	})
 }

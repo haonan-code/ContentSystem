@@ -4,11 +4,11 @@ import (
 	"contentsystem/internal/dao"
 	"contentsystem/internal/model"
 	"encoding/json"
-	"fmt"
-	"github.com/gin-gonic/gin"
-	goflow "github.com/s8sg/goflow/v1"
 	"net/http"
 	"time"
+
+	"github.com/gin-gonic/gin"
+	goflow "github.com/s8sg/goflow/v1"
 )
 
 type ContentCreateReq struct {
@@ -72,7 +72,7 @@ func (c *CmsApp) ContentCreate(ctx *gin.Context) {
 		"code": 0,
 		"msg":  "ok",
 		"data": &ContentCreateRsp{
-			Message: fmt.Sprintf("ok"),
+			Message: "ok",
 		},
 	})
 }

@@ -2,9 +2,9 @@ package services
 
 import (
 	"contentsystem/internal/dao"
-	"fmt"
-	"github.com/gin-gonic/gin"
 	"net/http"
+
+	"github.com/gin-gonic/gin"
 )
 
 type ContentDeleteReq struct {
@@ -41,7 +41,7 @@ func (c *CmsApp) ContentDelete(ctx *gin.Context) {
 		"code": 0,
 		"msg":  "ok",
 		"data": &ContentDeleteRsp{
-			Message: fmt.Sprintf("ok"),
+			Message: "ok",
 		},
 	})
 }

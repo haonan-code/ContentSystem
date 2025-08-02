@@ -2,11 +2,11 @@ package services
 
 import (
 	"contentsystem/internal/dao"
-	"fmt"
-	"github.com/gin-gonic/gin"
 	"log"
 	"net/http"
 	"time"
+
+	"github.com/gin-gonic/gin"
 )
 
 type Content struct {
@@ -82,7 +82,7 @@ func (c *CmsApp) ContentFind(ctx *gin.Context) {
 		"code": 0,
 		"msg":  "ok",
 		"data": &ContentFindRsp{
-			Message:  fmt.Sprintf("ok"),
+			Message:  "ok",
 			Contents: contents,
 			Total:    total,
 		},

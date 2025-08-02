@@ -5,11 +5,12 @@ import (
 	"contentsystem/internal/utils"
 	"context"
 	"fmt"
+	"net/http"
+	"time"
+
 	"github.com/gin-gonic/gin"
 	"github.com/google/uuid"
 	"golang.org/x/crypto/bcrypt"
-	"net/http"
-	"time"
 )
 
 type LoginReq struct {
@@ -60,8 +61,6 @@ func (c *CmsApp) Login(ctx *gin.Context) {
 			Nickname:  account.Nickname,
 		},
 	})
-	return
-
 }
 
 func (c *CmsApp) generateSessionID(ctx context.Context, userID string) (string, error) {
