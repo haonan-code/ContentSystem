@@ -15,12 +15,22 @@ func NewContentDao(db *gorm.DB) *ContentDao {
 	return &ContentDao{db: db}
 }
 
-func (c *ContentDao) Create(detail model.ContentDetail) error {
+func (c *ContentDao) First(id int) (*model.ContentDetail, error) {
+	var detail model.ContentDetail
+	if err := c.db.Where("id = ?", id).First(&detail).Error; err != nil {
+		log.Printf("content first error = %v", err)
+		return &detail, err
+	}
+	return &detail, nil
+
+}
+
+func (c *ContentDao) Create(detail model.ContentDetail) (int, error) {
 	if err := c.db.Create(&detail).Error; err != nil {
 		log.Printf("content create error =  %v", err)
-		return err
+		return 0, err
 	}
-	return nil
+	return detail.ID, nil
 }
 
 func (c *ContentDao) IsExist(contentID int) (bool, error) {
@@ -39,6 +49,16 @@ func (c *ContentDao) IsExist(contentID int) (bool, error) {
 func (c *ContentDao) Update(id int, detail model.ContentDetail) error {
 	if err := c.db.Where("id = ?", id).Updates(&detail).Error; err != nil {
 		log.Printf("content update error =  %v", err)
+		return err
+	}
+	return nil
+}
+
+func (c *ContentDao) UpdateByID(id int, column string, value interface{}) error {
+	if err := c.db.Model(&model.ContentDetail{}).
+		Where("id = ?", id).
+		Update(column, value).Error; err != nil {
+		log.Printf("content by id update error =  %v", err)
 		return err
 	}
 	return nil
